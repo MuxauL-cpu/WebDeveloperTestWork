@@ -1,0 +1,52 @@
+.ticker {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.ticker__input {
+  text-align: center;
+}
+
+.ticker__container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+
+.ticker__container-button {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+}
+
+.ticker__container :last-child {
+  border-left: 1px solid black;
+}
+
+.ticker__button {
+  cursor: pointer;
+  border: none;
+}
+
+.ticker__button:hover {
+  transition: 0.2s ease-in;
+  opacity: 0.7;
+}
+
+.ticker__button_sell {
+  cursor: pointer;
+  background-color: rgb(240, 129, 129);
+}
+
+.ticker__button_buy {
+  cursor: pointer;
+  background-color: rgb(101, 167, 101);
+}
