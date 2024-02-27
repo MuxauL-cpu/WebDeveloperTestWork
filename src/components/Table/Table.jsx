@@ -4,9 +4,9 @@ import { useTable } from 'react-table';
 import MOCK_DATA from '../../utils/MOCK_DATA.json';
 import { COLUMNS } from '../../utils/COLUMNS';
 
-function Table() {
+function Table({ setApplications, applications }) {
   const columns = React.useMemo(() => COLUMNS, []);
-  const data = React.useMemo(() => MOCK_DATA, []);
+  const data = React.useMemo(() => applications);
 
   const tableInstance = useTable({
     columns,

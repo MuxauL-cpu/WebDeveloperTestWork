@@ -3,7 +3,7 @@ import './Ticker.css';
 import DropDown from '../DropDown/DropDown';
 import useFormValidation from '../../utils/useFormValidation';
 
-function Ticker() {
+function Ticker({ addAplication }) {
   const RATES = {
     'USD/RUB': 93.41,
     'EUR/RUB': 101.01,
@@ -46,11 +46,19 @@ function Ticker() {
       <div className="ticker__container">
         <div className="ticker__container-button">
           <p className="ticker__container-text">{resultSell}</p>
-          <button className="ticker__button ticker__button_sell">Sell</button>
+          <button
+            onClick={() => addAplication(values.sum, resultSell, 'sell', selected)}
+            className="ticker__button ticker__button_sell">
+            Sell
+          </button>
         </div>
         <div className="ticker__container-button">
           <p className="ticker__container-text">{resultBuy}</p>
-          <button className="ticker__button ticker__button_buy">Buy</button>
+          <button
+            onClick={() => addAplication(values.sum, resultBuy, 'buy', selected)}
+            className="ticker__button ticker__button_buy">
+            Buy
+          </button>
         </div>
       </div>
     </section>
