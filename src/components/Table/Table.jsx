@@ -1,10 +1,9 @@
 import './Table.css';
 import React from 'react';
 import { useTable } from 'react-table';
-import MOCK_DATA from '../../utils/MOCK_DATA.json';
 import { COLUMNS } from '../../utils/COLUMNS';
 
-function Table({ setApplications, applications }) {
+function Table({ applications }) {
   const columns = React.useMemo(() => COLUMNS, []);
   const data = React.useMemo(() => applications);
 
@@ -26,7 +25,7 @@ function Table({ setApplications, applications }) {
         ))}
       </thead>
       <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
+        {rows.map((row, i) => {
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>

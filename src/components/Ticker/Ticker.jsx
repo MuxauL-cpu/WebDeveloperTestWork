@@ -2,26 +2,22 @@ import React from 'react';
 import './Ticker.css';
 import DropDown from '../DropDown/DropDown';
 import useFormValidation from '../../utils/useFormValidation';
+import { initialResponse } from '../../utils/initialResponse';
+import { RATES, RATES_SELL } from '../../utils/RATES';
+import useDate from '../../utils/useDate';
 
 function Ticker({ addAplication }) {
-  const RATES = {
-    'USD/RUB': 93.41,
-    'EUR/RUB': 101.01,
-    'RUB/USD': 0.011,
-    'RUB/EUR': 0.01,
-  };
-
-  const RATES_SELL = {
-    'USD/RUB': 91.5,
-    'EUR/RUB': 99.3,
-    'RUB/USD': 0.01,
-    'RUB/EUR': 0.009,
-  };
-
   const [selected, setSelected] = React.useState('');
   const [resultBuy, setResultBuy] = React.useState(0);
   const [resultSell, setResultSell] = React.useState(0);
-  const { values, onChange } = useFormValidation();
+  const { values, onChange, resetForm } = useFormValidation();
+  const { getDate, getDelayedDate } = useDate();
+
+  const getRandomItem = () => {
+    const randomNumber = Math.floor(Math.random() * initialResponse.length);
+    setTimeout(3000);
+    return initialResponse[randomNumber];
+  };
 
   const convert = async (inputValue, selected) => {
     setResultBuy((inputValue * RATES[selected]).toFixed(3));
@@ -45,17 +41,43 @@ function Ticker({ addAplication }) {
       />
       <div className="ticker__container">
         <div className="ticker__container-button">
-          <p className="ticker__container-text">{resultSell}</p>
+          <p className="ticker__container-text">{resultSell === 'NaN' ? '0.000' : resultSell}</p>
           <button
-            onClick={() => addAplication(values.sum, resultSell, 'sell', selected)}
+            disabled={!values.sum}
+            onClick={() => {
+              resetForm();
+              getRandomItem();
+              addAplication(
+                values.sum,
+                resultSell,
+                'sell',
+                selected,
+                getRandomItem(),
+                getDate(),
+                getDelayedDate(),
+              );
+            }}
             className="ticker__button ticker__button_sell">
             Sell
           </button>
         </div>
         <div className="ticker__container-button">
-          <p className="ticker__container-text">{resultBuy}</p>
+          <p className="ticker__container-text">{resultBuy === 'NaN' ? '0.000' : resultBuy}</p>
           <button
-            onClick={() => addAplication(values.sum, resultBuy, 'buy', selected)}
+            disabled={!values.sum}
+            onClick={() => {
+              resetForm();
+              getRandomItem();
+              addAplication(
+                values.sum,
+                resultSell,
+                'buy',
+                selected,
+                getRandomItem(),
+                getDate(),
+                getDelayedDate(),
+              );
+            }}
             className="ticker__button ticker__button_buy">
             Buy
           </button>

@@ -14,7 +14,7 @@ function DropDown({ selected, setSelected }) {
         <div className="dropdown-content">
           {instrument.map((value, i) => (
             <div
-              key={i}
+              key={i + 1}
               onClick={() => {
                 setSelected(value);
                 setActive(false);

@@ -10,11 +10,11 @@ class Api {
     }).then((res) => this._getResponse(res));
   }
 
-  createApplication({ amount, price, side, instrument }) {
+  createApplication({ amount, price, side, instrument, status, creation_time, change_time }) {
     return fetch(`${this._url}/Applications`, {
       headers: this._headers,
       method: 'POST',
-      body: JSON.stringify({ amount, price, side, instrument }),
+      body: JSON.stringify({ amount, price, side, instrument, status, creation_time, change_time }),
     }).then((res) => this._getResponse(res));
   }
 

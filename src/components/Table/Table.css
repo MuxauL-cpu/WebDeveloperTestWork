@@ -5,3 +5,17 @@ tr {
   background-color: #f0f0f0;
   color: black;
 }
+
+.cancel-order_visible {
+  visibility: hidden;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  background-image: url('../../images/delete-svgrepo-com.svg');
+  background-position: center;
+  background-size: cover;
+  border: none;
+}
+.cancel-order_visible {
+  visibility: visible;
+}

@@ -10,16 +10,21 @@ function App() {
   React.useEffect(() => {
     api.getApplications().then((data) => {
       setApplications(data);
-      console.log(data);
-      console.log(applications);
     });
   }, []);
 
-  function addAplication(amount, price, side, instrument) {
+  function addAplication(amount, price, side, instrument, status, date, change_time) {
     api
-      .createApplication({ amount: amount, price: price, side: side, instrument: instrument })
+      .createApplication({
+        amount: amount,
+        price: price,
+        side: side,
+        instrument: instrument,
+        status: status,
+        creation_time: date,
+        change_time: change_time,
+      })
       .then((res) => {
-        console.log(1);
         setApplications([...applications, res]);
       })
       .catch((error) => {
