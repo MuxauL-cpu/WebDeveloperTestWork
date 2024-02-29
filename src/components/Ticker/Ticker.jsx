@@ -43,7 +43,7 @@ function Ticker({ addAplication }) {
         <div className="ticker__container-button">
           <p className="ticker__container-text">{resultSell === 'NaN' ? '0.000' : resultSell}</p>
           <button
-            disabled={!values.sum}
+            disabled={!values.sum || !selected}
             onClick={() => {
               resetForm();
               getRandomItem();
@@ -64,7 +64,7 @@ function Ticker({ addAplication }) {
         <div className="ticker__container-button">
           <p className="ticker__container-text">{resultBuy === 'NaN' ? '0.000' : resultBuy}</p>
           <button
-            disabled={!values.sum}
+            disabled={!values.sum || !selected}
             onClick={() => {
               resetForm();
               getRandomItem();
